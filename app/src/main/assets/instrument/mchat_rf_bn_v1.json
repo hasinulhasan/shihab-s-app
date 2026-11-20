@@ -1,0 +1,494 @@
+{
+  "schemaVersion": 1,
+  "instrumentId": "mchat_rf",
+  "instrumentVersion": "2017-authorized-bn-v1",
+  "scoringAlgorithmVersion": "mchat-rf-deterministic-v1",
+  "language": "bn",
+  "displayTitle": "এম চাট - আর / ফলো-আপ (M-CHAT-R/F)",
+  "copyrightNotice": "© 2009 Diana Robins, Deborah Fein & Marianne Barton",
+  "translatorCredit": "Translators: Shaheen Akhter, Jannatara Shefa, Abu Sufian, Emdadul Hoque Howlader; 2017",
+  "permissionNotice": "ফলো-আপ প্রশ্নপত্রসহ সংশোধিত M-CHAT-R/F: Robins, Fein & Barton, 2009 এর পরিবর্তিত চেক লিস্ট (অটিজম বৈশিষ্ট্য সম্পন্ন শিশু/Toddlers দের জন্য প্রযোজ্য)। www.mchatscreen.com কর্তৃক অনুমোদিত। কোন একটি অংশ, অংশসমূহ বা নির্দেশনার ক্ষেত্রে কোনরকম পরিবর্তন করা যাবে না।",
+  "nonDiagnosticDisclaimer": "M-CHAT-R এর প্রাথমিক উদ্দেশ্য হচ্ছে Sensitivity বাড়ানো এবং যতটা সম্ভব এএসডি'র বৈশিষ্ট্যসমূহ প্রাথমিকভাবে সনাক্ত করা। এর মাধ্যমে নির্ণীত সকল শিশু এএসডি'র ঝুঁকিতে নাও থাকতে পারে; এটি রোগ নির্ণয়ের যন্ত্র নয়। অতএব এএসডি পজিটিভ নির্ণীত সকল শিশুকেই পুনর্মূল্যায়ন জরুরী।",
+  "intendedAgeMonths": {
+    "min": 16,
+    "max": 30
+  },
+  "responseOptions": {
+    "initial": {
+      "yesLabel": "হ্যাঁ",
+      "noLabel": "না"
+    },
+    "followUp": {
+      "passLabel": "পাশ",
+      "failLabel": "ফেল"
+    }
+  },
+  "scoringConfig": {
+    "totalItems": 20,
+    "initialCategories": [
+      { "category": "LOW", "minScore": 0, "maxScore": 2 },
+      { "category": "MODERATE", "minScore": 3, "maxScore": 7 },
+      { "category": "HIGH", "minScore": 8, "maxScore": 20 }
+    ],
+    "followUpPositiveThreshold": 2,
+    "highRiskAllowsOptionalFollowUp": false,
+    "lowRiskRescreenRule": {
+      "triggerIfAgeMonthsUnder": 24,
+      "rescreenAtAgeMonths": 24
+    }
+  },
+  "items": [
+    {
+      "itemId": "mchat_r_01",
+      "officialNumber": 1,
+      "text": "ঘরের অন্য প্রান্ত কোন খেলনার দিকে আঙ্গুল দিয়ে নির্দেশ করলে আপনার শিশু কি সেদিকে তাকায়? (যেমন: যদি আপনি কোন খেলনা বা প্রাণীর দিকে আঙ্গুল নির্দেশ করেন বা দেখান তাহলে আপনার শিশু সে দিকে তাকায়?)",
+      "atRiskResponse": "NO",
+      "pointValue": 1,
+      "followUpFlow": {
+        "entryNodeId": "bn_fu_01",
+        "nodes": [
+          {
+            "nodeId": "bn_fu_01",
+            "nodeType": "CLINICIAN_PASS_FAIL",
+            "promptText": "M-CHAT-R/F দ্বিতীয় ধাপ (প্রশ্ন ১): আঙ্গুল দিয়ে নির্দেশ করলে শিশুর প্রতিক্রিয়া সম্পর্কে বিস্তারিত জেনে 'পাশ' অথবা 'ফেল' নির্বাচন করুন।",
+            "transitions": [
+              { "condition": "PASS", "terminalResult": "PASS" },
+              { "condition": "FAIL", "terminalResult": "FAIL" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "itemId": "mchat_r_02",
+      "officialNumber": 2,
+      "text": "আপনার কি কখনো মনে হয়েছে যে, আপনার শিশুটি কানে শুনে না?",
+      "atRiskResponse": "YES",
+      "pointValue": 1,
+      "followUpFlow": {
+        "entryNodeId": "bn_fu_02",
+        "nodes": [
+          {
+            "nodeId": "bn_fu_02",
+            "nodeType": "CLINICIAN_PASS_FAIL",
+            "promptText": "M-CHAT-R/F দ্বিতীয় ধাপ (প্রশ্ন ২): শিশুটি শব্দ বা মানুষের ডাকে সাড়া দেয় কিনা তা যাচাই করে 'পাশ' অথবা 'ফেল' নির্বাচন করুন।",
+            "transitions": [
+              { "condition": "PASS", "terminalResult": "PASS" },
+              { "condition": "FAIL", "terminalResult": "FAIL" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "itemId": "mchat_r_03",
+      "officialNumber": 3,
+      "text": "আপনার শিশু কখনো ভান করে খেলা বা কল্পনা প্রসূত খেলা করে কি? (যেমন: কোন খালি কাপ থেকে মিছিমিছি পান করা/ভান করে টেলিফোনে কথা বলা/পুতুল কিংবা খেলনা প্রাণীকে খাওয়ায় কি?)",
+      "atRiskResponse": "NO",
+      "pointValue": 1,
+      "followUpFlow": {
+        "entryNodeId": "bn_fu_03",
+        "nodes": [
+          {
+            "nodeId": "bn_fu_03",
+            "nodeType": "CLINICIAN_PASS_FAIL",
+            "promptText": "M-CHAT-R/F দ্বিতীয় ধাপ (প্রশ্ন ৩): ভান করে বা কল্পনাপ্রসূত খেলার উদাহরণ যাচাই করে 'পাশ' অথবা 'ফেল' নির্বাচন করুন।",
+            "transitions": [
+              { "condition": "PASS", "terminalResult": "PASS" },
+              { "condition": "FAIL", "terminalResult": "FAIL" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "itemId": "mchat_r_04",
+      "officialNumber": 4,
+      "text": "আপনার শিশু কোন কিছু বেয়ে উপরে উঠতে পছন্দ করে কি? (যেমন: আসবাবপত্র, খেলনা সামগ্রী, সিঁড়ি)।",
+      "atRiskResponse": "NO",
+      "pointValue": 1,
+      "followUpFlow": {
+        "entryNodeId": "bn_fu_04",
+        "nodes": [
+          {
+            "nodeId": "bn_fu_04",
+            "nodeType": "CLINICIAN_PASS_FAIL",
+            "promptText": "M-CHAT-R/F দ্বিতীয় ধাপ (প্রশ্ন ৪): আসবাবপত্র, সিঁড়ি বা খেলার সামগ্রী বেয়ে ওঠার বিষয়টি যাচাই করে 'পাশ' অথবা 'ফেল' নির্বাচন করুন।",
+            "transitions": [
+              { "condition": "PASS", "terminalResult": "PASS" },
+              { "condition": "FAIL", "terminalResult": "FAIL" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "itemId": "mchat_r_05",
+      "officialNumber": 5,
+      "text": "আপনার শিশু তার আঙ্গুল নিয়ে চোখের সামনে অস্বাভাবিকভাবে নাড়াচাড়া করে কি?",
+      "atRiskResponse": "YES",
+      "pointValue": 1,
+      "followUpFlow": {
+        "entryNodeId": "bn_fu_05",
+        "nodes": [
+          {
+            "nodeId": "bn_fu_05",
+            "nodeType": "CLINICIAN_PASS_FAIL",
+            "promptText": "M-CHAT-R/F দ্বিতীয় ধাপ (প্রশ্ন ৫): চোখের সামনে আঙ্গুল নাড়াচাড়ার ধরন ও ঘনত্ব যাচাই করে 'পাশ' অথবা 'ফেল' নির্বাচন করুন।",
+            "transitions": [
+              { "condition": "PASS", "terminalResult": "PASS" },
+              { "condition": "FAIL", "terminalResult": "FAIL" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "itemId": "mchat_r_06",
+      "officialNumber": 6,
+      "text": "আপনার শিশু কোন কিছু চাওয়ার বা সাহায্যের জন্য সেদিকে এক আঙ্গুল নির্দেশ করে দেখায় কি? (যেমন: নাগালের বাইরের কোন খাদ্য বা খেলনার দিকে আঙ্গুল দিয়ে দেখানো?)",
+      "atRiskResponse": "NO",
+      "pointValue": 1,
+      "followUpFlow": {
+        "entryNodeId": "bn_fu_06",
+        "nodes": [
+          {
+            "nodeId": "bn_fu_06",
+            "nodeType": "CLINICIAN_PASS_FAIL",
+            "promptText": "M-CHAT-R/F দ্বিতীয় ধাপ (প্রশ্ন ৬): সাহায্যের জন্য এক আঙ্গুল দিয়ে দেখানোর আচরণ যাচাই করে 'পাশ' অথবা 'ফেল' নির্বাচন করুন।",
+            "transitions": [
+              { "condition": "PASS", "terminalResult": "PASS" },
+              { "condition": "FAIL", "terminalResult": "FAIL" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "itemId": "mchat_r_07",
+      "officialNumber": 7,
+      "text": "আপনার শিশু কখনো তার আগ্রহের কোন কিছু আঙ্গুল নির্দেশ করে দেখায় কি? (যেমন: কোন উড়োজাহাজ বা রাস্তায় একটি বড় ট্রাক)",
+      "atRiskResponse": "NO",
+      "pointValue": 1,
+      "followUpFlow": {
+        "entryNodeId": "bn_fu_07",
+        "nodes": [
+          {
+            "nodeId": "bn_fu_07",
+            "nodeType": "CLINICIAN_PASS_FAIL",
+            "promptText": "M-CHAT-R/F দ্বিতীয় ধাপ (প্রশ্ন ৭): শুধুমাত্র আগ্রহ শেয়ার করার জন্য আঙ্গুল নির্দেশ করে কিনা তা যাচাই করে 'পাশ' অথবা 'ফেল' নির্বাচন করুন।",
+            "transitions": [
+              { "condition": "PASS", "terminalResult": "PASS" },
+              { "condition": "FAIL", "terminalResult": "FAIL" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "itemId": "mchat_r_08",
+      "officialNumber": 8,
+      "text": "আপনার শিশু অন্য শিশুদের প্রতি আগ্রহ প্রকাশ করে কি? (যেমন: অন্য শিশুরা কি করছে সেদিকে খেয়াল করা, তাদের দিকে তাকিয়ে হাসা বা তাদের দিকে যায় কি?)",
+      "atRiskResponse": "NO",
+      "pointValue": 1,
+      "followUpFlow": {
+        "entryNodeId": "bn_fu_08",
+        "nodes": [
+          {
+            "nodeId": "bn_fu_08",
+            "nodeType": "CLINICIAN_PASS_FAIL",
+            "promptText": "M-CHAT-R/F দ্বিতীয় ধাপ (প্রশ্ন ৮): অন্যান্য শিশুদের প্রতি সামাজিক আগ্রহ যাচাই করে 'পাশ' অথবা 'ফেল' নির্বাচন করুন।",
+            "transitions": [
+              { "condition": "PASS", "terminalResult": "PASS" },
+              { "condition": "FAIL", "terminalResult": "FAIL" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "itemId": "mchat_r_09",
+      "officialNumber": 9,
+      "text": "আপনার শিশু শুধুমাত্র সাহায্যের জন্যই নয়, শেয়ার করার জন্য কোন কিছু এনে বা তুলে ধরে আপনাকে দেখায় কি? (যেমন: আপনাকে কোন ফুল, খেলনা প্রাণী বা গাড়ি এনে দেখানো।)",
+      "atRiskResponse": "NO",
+      "pointValue": 1,
+      "followUpFlow": {
+        "entryNodeId": "bn_fu_09",
+        "nodes": [
+          {
+            "nodeId": "bn_fu_09",
+            "nodeType": "CLINICIAN_PASS_FAIL",
+            "promptText": "M-CHAT-R/F দ্বিতীয় ধাপ (প্রশ্ন ৯): শেয়ার করার উদ্দেশ্যে কোনো বস্তু দেখায় কিনা তা যাচাই করে 'পাশ' অথবা 'ফেল' নির্বাচন করুন।",
+            "transitions": [
+              { "condition": "PASS", "terminalResult": "PASS" },
+              { "condition": "FAIL", "terminalResult": "FAIL" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "itemId": "mchat_r_10",
+      "officialNumber": 10,
+      "text": "আপনার শিশুকে তার নাম ধরে ডাকলে সাড়া দেয় কি? (যেমন: আপনার দিকে তাকানো, কথা বলা, বাবল করা বা তার নাম ধরে ডাকলে তার সে যে কাজটি করছে তা বন্ধ করে কি?)",
+      "atRiskResponse": "NO",
+      "pointValue": 1,
+      "followUpFlow": {
+        "entryNodeId": "bn_fu_10",
+        "nodes": [
+          {
+            "nodeId": "bn_fu_10",
+            "nodeType": "CLINICIAN_PASS_FAIL",
+            "promptText": "M-CHAT-R/F দ্বিতীয় ধাপ (প্রশ্ন ১০): নাম ধরে ডাকলে শিশুর সাড়া দেওয়ার আচরণ যাচাই করে 'পাশ' অথবা 'ফেল' নির্বাচন করুন।",
+            "transitions": [
+              { "condition": "PASS", "terminalResult": "PASS" },
+              { "condition": "FAIL", "terminalResult": "FAIL" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "itemId": "mchat_r_11",
+      "officialNumber": 11,
+      "text": "যখন আপনি আপনার শিশুর দিকে তাকিয়ে হাসেন তখন সে কি হাসে?",
+      "atRiskResponse": "NO",
+      "pointValue": 1,
+      "followUpFlow": {
+        "entryNodeId": "bn_fu_11",
+        "nodes": [
+          {
+            "nodeId": "bn_fu_11",
+            "nodeType": "CLINICIAN_PASS_FAIL",
+            "promptText": "M-CHAT-R/F দ্বিতীয় ধাপ (প্রশ্ন ১১): হাসির প্রতিউত্তরে সামাজিক হাসি দেয় কিনা তা যাচাই করে 'পাশ' অথবা 'ফেল' নির্বাচন করুন।",
+            "transitions": [
+              { "condition": "PASS", "terminalResult": "PASS" },
+              { "condition": "FAIL", "terminalResult": "FAIL" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "itemId": "mchat_r_12",
+      "officialNumber": 12,
+      "text": "আপনার শিশু প্রতিদিনের বিভিন্ন শব্দে অতিমাত্রায় প্রতিক্রিয়া দেখায় কি? (যেমন: ভাকুয়াম ক্লিনার বা উচ্চ স্বরের গানের শব্দে কান্না করে।)",
+      "atRiskResponse": "YES",
+      "pointValue": 1,
+      "followUpFlow": {
+        "entryNodeId": "bn_fu_12",
+        "nodes": [
+          {
+            "nodeId": "bn_fu_12",
+            "nodeType": "CLINICIAN_PASS_FAIL",
+            "promptText": "M-CHAT-R/F দ্বিতীয় ধাপ (প্রশ্ন ১২): প্রাত্যহিক শব্দে অতিসংবেদনশীলতার তীব্রতা যাচাই করে 'পাশ' অথবা 'ফেল' নির্বাচন করুন।",
+            "transitions": [
+              { "condition": "PASS", "terminalResult": "PASS" },
+              { "condition": "FAIL", "terminalResult": "FAIL" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "itemId": "mchat_r_13",
+      "officialNumber": 13,
+      "text": "আপনার শিশু কি হাঁটে?",
+      "atRiskResponse": "NO",
+      "pointValue": 1,
+      "followUpFlow": {
+        "entryNodeId": "bn_fu_13",
+        "nodes": [
+          {
+            "nodeId": "bn_fu_13",
+            "nodeType": "CLINICIAN_PASS_FAIL",
+            "promptText": "M-CHAT-R/F দ্বিতীয় ধাপ (প্রশ্ন ১৩): কোনো অবলম্বন ছাড়া স্বাধীনভাবে হাঁটে কিনা তা যাচাই করে 'পাশ' অথবা 'ফেল' নির্বাচন করুন।",
+            "transitions": [
+              { "condition": "PASS", "terminalResult": "PASS" },
+              { "condition": "FAIL", "terminalResult": "FAIL" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "itemId": "mchat_r_14",
+      "officialNumber": 14,
+      "text": "আপনি যখন আপনার শিশুর সাথে কথা বলেন বা খেলা করেন বা তার পোষাক পরিবর্তন করে দেন তখন, আপনার চোখের দিকে তাকায় কি?",
+      "atRiskResponse": "NO",
+      "pointValue": 1,
+      "followUpFlow": {
+        "entryNodeId": "bn_fu_14",
+        "nodes": [
+          {
+            "nodeId": "bn_fu_14",
+            "nodeType": "CLINICIAN_PASS_FAIL",
+            "promptText": "M-CHAT-R/F দ্বিতীয় ধাপ (প্রশ্ন ১৪): দৈনন্দিন কথোপকথন ও খেলার সময় চোখে চোখ রেখে তাকায় কিনা তা যাচাই করে 'পাশ' অথবা 'ফেল' নির্বাচন করুন।",
+            "transitions": [
+              { "condition": "PASS", "terminalResult": "PASS" },
+              { "condition": "FAIL", "terminalResult": "FAIL" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "itemId": "mchat_r_15",
+      "officialNumber": 15,
+      "text": "আপনার শিশু কি আপনাকে অনুকরণ করে? (যেমন: টাটা, হাততালি দিলে, বাই বাই করলে, মজা করলে, অদ্ভুত কোন শব্দ করা)।",
+      "atRiskResponse": "NO",
+      "pointValue": 1,
+      "followUpFlow": {
+        "entryNodeId": "bn_fu_15",
+        "nodes": [
+          {
+            "nodeId": "bn_fu_15",
+            "nodeType": "CLINICIAN_PASS_FAIL",
+            "promptText": "M-CHAT-R/F দ্বিতীয় ধাপ (প্রশ্ন ১৫): অনুকরণ করার উদাহরণসমূহ যাচাই করে 'পাশ' অথবা 'ফেল' নির্বাচন করুন।",
+            "transitions": [
+              { "condition": "PASS", "terminalResult": "PASS" },
+              { "condition": "FAIL", "terminalResult": "FAIL" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "itemId": "mchat_r_16",
+      "officialNumber": 16,
+      "text": "আপনি কোন কিছুর দিকে ঘুরে তাকালে আপনার শিশু কি আপনি কি দেখছেন সেটা দেখার চেষ্টা করে?",
+      "atRiskResponse": "NO",
+      "pointValue": 1,
+      "followUpFlow": {
+        "entryNodeId": "bn_fu_16",
+        "nodes": [
+          {
+            "nodeId": "bn_fu_16",
+            "nodeType": "CLINICIAN_PASS_FAIL",
+            "promptText": "M-CHAT-R/F দ্বিতীয় ধাপ (প্রশ্ন ১৬): দৃষ্টি অনুসরণ (gaze following) করে কিনা তা যাচাই করে 'পাশ' অথবা 'ফেল' নির্বাচন করুন।",
+            "transitions": [
+              { "condition": "PASS", "terminalResult": "PASS" },
+              { "condition": "FAIL", "terminalResult": "FAIL" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "itemId": "mchat_r_17",
+      "officialNumber": 17,
+      "text": "আপনার শিশু কি তার দিকে আপনার মনোযোগ আকর্ষণের চেষ্টা করে? (যেমন: যখন আপনি তাকে প্রশংসা করেন কিংবা বলে 'দেখো' বা খেয়াল কর)",
+      "atRiskResponse": "NO",
+      "pointValue": 1,
+      "followUpFlow": {
+        "entryNodeId": "bn_fu_17",
+        "nodes": [
+          {
+            "nodeId": "bn_fu_17",
+            "nodeType": "CLINICIAN_PASS_FAIL",
+            "promptText": "M-CHAT-R/F দ্বিতীয় ধাপ (প্রশ্ন ১৭): অভিভাবকের মনোযোগ আকর্ষণের চেষ্টা করে কিনা তা যাচাই করে 'পাশ' অথবা 'ফেল' নির্বাচন করুন।",
+            "transitions": [
+              { "condition": "PASS", "terminalResult": "PASS" },
+              { "condition": "FAIL", "terminalResult": "FAIL" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "itemId": "mchat_r_18",
+      "officialNumber": 18,
+      "text": "শিশুকে কোন কাজ করতে বললে সেকি তা বুঝতে পারে? (যেমন: কোন রকম ইশারা ইঙ্গিত ছাড়াই- বইটি টেবিলের উপর রাখ বা কম্বলটি নিয়ে আস)",
+      "atRiskResponse": "NO",
+      "pointValue": 1,
+      "followUpFlow": {
+        "entryNodeId": "bn_fu_18",
+        "nodes": [
+          {
+            "nodeId": "bn_fu_18",
+            "nodeType": "CLINICIAN_PASS_FAIL",
+            "promptText": "M-CHAT-R/F দ্বিতীয় ধাপ (প্রশ্ন ১৮): ইশারা-ইঙ্গিত ছাড়া সাধারণ মৌখিক নির্দেশনা বুঝতে পারে কিনা তা যাচাই করে 'পাশ' অথবা 'ফেল' নির্বাচন করুন।",
+            "transitions": [
+              { "condition": "PASS", "terminalResult": "PASS" },
+              { "condition": "FAIL", "terminalResult": "FAIL" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "itemId": "mchat_r_19",
+      "officialNumber": 19,
+      "text": "নতুন কিছু ঘটলে শিশু কি আপনার মুখের দিকে তাকিয়ে আপনার অনুভূতি বোঝার চেষ্টা করে? (যেমন: অদ্ভুত বা মজার কোন শব্দ শুনে বা নতুন কোন খেলনা দেখে সে আপনার মুখের দিকে তাকায়?)",
+      "atRiskResponse": "NO",
+      "pointValue": 1,
+      "followUpFlow": {
+        "entryNodeId": "bn_fu_19",
+        "nodes": [
+          {
+            "nodeId": "bn_fu_19",
+            "nodeType": "CLINICIAN_PASS_FAIL",
+            "promptText": "M-CHAT-R/F দ্বিতীয় ধাপ (প্রশ্ন ১৯): নতুন পরিস্থিতিতে অভিভাবকের মুখের অভিব্যক্তি লক্ষ করে কিনা তা যাচাই করে 'পাশ' অথবা 'ফেল' নির্বাচন করুন।",
+            "transitions": [
+              { "condition": "PASS", "terminalResult": "PASS" },
+              { "condition": "FAIL", "terminalResult": "FAIL" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "itemId": "mchat_r_20",
+      "officialNumber": 20,
+      "text": "আপনার শিশু কি দোলানো/নড়াচড়া ধরনের কাজ পছন্দ করে? (যেমন: হাঁটুর উপরে তুলে দোলানো বা লাফানো)",
+      "atRiskResponse": "NO",
+      "pointValue": 1,
+      "followUpFlow": {
+        "entryNodeId": "bn_fu_20",
+        "nodes": [
+          {
+            "nodeId": "bn_fu_20",
+            "nodeType": "CLINICIAN_PASS_FAIL",
+            "promptText": "M-CHAT-R/F দ্বিতীয় ধাপ (প্রশ্ন ২০): দোলানো বা নড়াচড়া ধরনের খেলায় আনন্দ পায় কিনা তা যাচাই করে 'পাশ' অথবা 'ফেল' নির্বাচন করুন।",
+            "transitions": [
+              { "condition": "PASS", "terminalResult": "PASS" },
+              { "condition": "FAIL", "terminalResult": "FAIL" }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "recommendations": {
+    "NEGATIVE_LOW_INITIAL_UNDER_24M": {
+      "code": "LOW_RESCREEN_AT_24M",
+      "title": "নেগেটিভ স্ক্রিন — Low Risk (ঝুঁকি কম) — ২৪ মাস বয়সে পুনঃস্ক্রিনিং",
+      "body": "স্কোর ০-২ হলে Low Risk। যেহেতু শিশুর বয়স ২৪ মাসের কম, তাই ২ বছর বয়সে আবার এম চাট স্ক্রিনিং করতে হবে।"
+    },
+    "NEGATIVE_LOW_INITIAL_24M_OR_OLDER": {
+      "code": "LOW_NO_ACTION",
+      "title": "নেগেটিভ স্ক্রিন — Low Risk (ঝুঁকি কম)",
+      "body": "স্কোর ০-২ হলে Low Risk। এই মুহূর্তে ফলো-আপের প্রয়োজন নেই, তবে নিয়মিত বিকাশ পর্যবেক্ষণ চালিয়ে যেতে হবে।"
+    },
+    "FOLLOWUP_REQUIRED_MODERATE": {
+      "code": "MODERATE_FOLLOWUP_REQUIRED",
+      "title": "Medium Risk (মাঝারি ঝুঁকি) — এম চাট ফলো-আপ প্রয়োজন",
+      "body": "স্কোর ৩-৭ হলে এম চাট ফলো-আপ ক্লিনিক করতে হবে। যদি তখন স্কোর ২ বা তার বেশি হয় তবে শিশুটির এম চাট পজেটিভ। যদি স্কোর ০-১ হয় তবে শিশুটির এম চাট নেগেটিভ।"
+    },
+    "NEGATIVE_AFTER_FOLLOWUP": {
+      "code": "MODERATE_NEGATIVE_AFTER_FOLLOWUP",
+      "title": "নেগেটিভ স্ক্রিন — ফলো-আপ পরবর্তী",
+      "body": "এম চাট ফলো-আপ স্কোর ০-১ হওয়ায় শিশুটির এম চাট নেগেটিভ। নিয়মিত Well-child care ভিজিটে শিশুর বিকাশ পর্যবেক্ষণ অব্যাহত রাখুন।"
+    },
+    "POSITIVE_AFTER_FOLLOWUP": {
+      "code": "MODERATE_POSITIVE_AFTER_FOLLOWUP",
+      "title": "পজেটিভ স্ক্রিন — দ্রুত ASD মূল্যায়নের জন্য রেফারেল",
+      "body": "M-CHAT-R/F ফলো-আপে ২ বা তার বেশি প্রশ্নে 'ফেল' হওয়ায় স্ক্রিনিং পজেটিভ। যত দ্রুত সম্ভব ASD নির্ণয়ের জন্য সংশ্লিষ্ট বিভাগে রেফার করতে হবে।"
+    },
+    "POSITIVE_HIGH_INITIAL": {
+      "code": "HIGH_DIRECT_REFERRAL",
+      "title": "পজেটিভ স্ক্রিন — High Risk (ঝুঁকি বেশি) — সরাসরি রেফারেল",
+      "body": "স্কোর ৮-২০ হলে এম চাট ফলো-আপ না করে দ্রুত ASD নির্ণয়ের জন্য ডিএসএম ফোর/ফাইভ বা ADOS-G করতে হবে এবং সংশ্লিষ্ট বিভাগে রেফার করতে হবে।"
+    }
+  }
+}

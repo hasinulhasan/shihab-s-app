@@ -1,0 +1,525 @@
+{
+  "schemaVersion": 1,
+  "instrumentId": "mchat_rf",
+  "instrumentVersion": "2009-official-en-v1",
+  "scoringAlgorithmVersion": "mchat-rf-deterministic-v1",
+  "language": "en",
+  "displayTitle": "M-CHAT-R/F (Modified Checklist for Autism in Toddlers, Revised with Follow-Up)",
+  "copyrightNotice": "© 2009 Diana Robins, Deborah Fein & Marianne Barton",
+  "translatorCredit": null,
+  "permissionNotice": "Reproduced for clinical screening and record-keeping per M-CHAT-R/F guidelines (www.mchatscreen.com). No item text or scoring rules altered.",
+  "nonDiagnosticDisclaimer": "The M-CHAT-R/F is a screening tool designed to maximize sensitivity and detect as many cases of ASD as possible; it is NOT a diagnostic instrument. Children who screen positive require diagnostic evaluation and early intervention eligibility assessment.",
+  "intendedAgeMonths": {
+    "min": 16,
+    "max": 30
+  },
+  "responseOptions": {
+    "initial": {
+      "yesLabel": "Yes",
+      "noLabel": "No"
+    },
+    "followUp": {
+      "passLabel": "Pass",
+      "failLabel": "Fail"
+    }
+  },
+  "scoringConfig": {
+    "totalItems": 20,
+    "initialCategories": [
+      { "category": "LOW", "minScore": 0, "maxScore": 2 },
+      { "category": "MODERATE", "minScore": 3, "maxScore": 7 },
+      { "category": "HIGH", "minScore": 8, "maxScore": 20 }
+    ],
+    "followUpPositiveThreshold": 2,
+    "highRiskAllowsOptionalFollowUp": false,
+    "lowRiskRescreenRule": {
+      "triggerIfAgeMonthsUnder": 24,
+      "rescreenAtAgeMonths": 24
+    }
+  },
+  "items": [
+    {
+      "itemId": "mchat_r_01",
+      "officialNumber": 1,
+      "text": "If you point at something across the room, does your child look at it? (For example, if you point at a toy or an animal, does your child look at the toy or animal?)",
+      "atRiskResponse": "NO",
+      "pointValue": 1,
+      "followUpFlow": {
+        "entryNodeId": "fu_01_start",
+        "nodes": [
+          {
+            "nodeId": "fu_01_start",
+            "nodeType": "MULTI_EXAMPLE_CHECKLIST",
+            "promptText": "Ask the caregiver to describe what the child usually does when you point to something across the room.",
+            "passExamples": [
+              { "id": "p1", "label": "Looks at the object being pointed to" },
+              { "id": "p2", "label": "Points to the object" },
+              { "id": "p3", "label": "Looks and comments on the object" },
+              { "id": "p4", "label": "Looks if caregiver points and says 'Look!'" }
+            ],
+            "failExamples": [
+              { "id": "f1", "label": "Ignores the caregiver" },
+              { "id": "f2", "label": "Looks around the room randomly" },
+              { "id": "f3", "label": "Looks at caregiver's finger instead of the object" }
+            ],
+            "transitions": [
+              { "condition": "PASS_ONLY", "terminalResult": "PASS" },
+              { "condition": "FAIL_ONLY", "terminalResult": "FAIL" },
+              { "condition": "BOTH", "nextNodeId": "fu_01_tie" },
+              { "condition": "NONE", "terminalResult": "FAIL" }
+            ]
+          },
+          {
+            "nodeId": "fu_01_tie",
+            "nodeType": "FREQUENCY_TIEBREAKER",
+            "promptText": "Which behavior does the child do most often when you point across the room?",
+            "transitions": [
+              { "condition": "MOST_OFTEN_PASS", "terminalResult": "PASS" },
+              { "condition": "MOST_OFTEN_FAIL", "terminalResult": "FAIL" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "itemId": "mchat_r_02",
+      "officialNumber": 2,
+      "text": "Have you ever wondered if your child might be deaf?",
+      "atRiskResponse": "YES",
+      "pointValue": 1,
+      "followUpFlow": {
+        "entryNodeId": "fu_02_start",
+        "nodes": [
+          {
+            "nodeId": "fu_02_start",
+            "nodeType": "MULTI_EXAMPLE_CHECKLIST",
+            "promptText": "Clarify why hearing was questioned. Does the child often ignore sounds or ignore other people?",
+            "passExamples": [
+              { "id": "p1", "label": "No — responds reliably to sounds and people (concern was temporary or ear-infection related)" }
+            ],
+            "failExamples": [
+              { "id": "f1", "label": "Often ignores sounds" },
+              { "id": "f2", "label": "Often ignores other people speaking" }
+            ],
+            "transitions": [
+              { "condition": "PASS_ONLY", "terminalResult": "PASS" },
+              { "condition": "FAIL_ONLY", "terminalResult": "FAIL" },
+              { "condition": "BOTH", "terminalResult": "FAIL" },
+              { "condition": "NONE", "terminalResult": "PASS" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "itemId": "mchat_r_03",
+      "officialNumber": 3,
+      "text": "Does your child play pretend or make-believe? (For example, pretend to drink from an empty cup, pretend to talk on a phone, or pretend to feed a doll or stuffed animal?)",
+      "atRiskResponse": "NO",
+      "pointValue": 1,
+      "followUpFlow": {
+        "entryNodeId": "fu_03_start",
+        "nodes": [
+          {
+            "nodeId": "fu_03_start",
+            "nodeType": "CLINICIAN_PASS_FAIL",
+            "promptText": "Ask for specific examples of pretend or make-believe play (drinking from toy cup, feeding doll/animal, pretending to talk on phone, pushing toy car as if on road). Record Pass if any genuine pretend play occurs, otherwise Fail.",
+            "transitions": [
+              { "condition": "PASS", "terminalResult": "PASS" },
+              { "condition": "FAIL", "terminalResult": "FAIL" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "itemId": "mchat_r_04",
+      "officialNumber": 4,
+      "text": "Does your child like climbing on things? (For example, furniture, playground equipment, or stairs)",
+      "atRiskResponse": "NO",
+      "pointValue": 1,
+      "followUpFlow": {
+        "entryNodeId": "fu_04_start",
+        "nodes": [
+          {
+            "nodeId": "fu_04_start",
+            "nodeType": "CLINICIAN_PASS_FAIL",
+            "promptText": "Ask whether the child enjoys climbing on stairs, chairs, furniture, or playground equipment. Record Pass if yes to any climbing activity, otherwise Fail.",
+            "transitions": [
+              { "condition": "PASS", "terminalResult": "PASS" },
+              { "condition": "FAIL", "terminalResult": "FAIL" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "itemId": "mchat_r_05",
+      "officialNumber": 5,
+      "text": "Does your child make unusual finger movements near his or her eyes? (For example, does your child wiggle his or her fingers close to his or her eyes?)",
+      "atRiskResponse": "YES",
+      "pointValue": 1,
+      "followUpFlow": {
+        "entryNodeId": "fu_05_start",
+        "nodes": [
+          {
+            "nodeId": "fu_05_start",
+            "nodeType": "SINGLE_CHOICE",
+            "promptText": "Clarify whether the finger movements are unusual (e.g., wiggling fingers near eyes, flapping hands near face) rather than typical gestures (e.g., rubbing eyes, peek-a-boo). Do unusual finger movements happen more than twice a week?",
+            "transitions": [
+              { "condition": "YES", "terminalResult": "FAIL" },
+              { "condition": "NO", "terminalResult": "PASS" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "itemId": "mchat_r_06",
+      "officialNumber": 6,
+      "text": "Does your child point with one finger to ask for something or to get help? (For example, pointing to a snack or toy that is out of reach)",
+      "atRiskResponse": "NO",
+      "pointValue": 1,
+      "followUpFlow": {
+        "entryNodeId": "fu_06_start",
+        "nodes": [
+          {
+            "nodeId": "fu_06_start",
+            "nodeType": "CLINICIAN_PASS_FAIL",
+            "promptText": "Ask how the child requests an out-of-reach item (e.g., reaching with whole hand, leading parent's hand, vocalizing, or pointing with one finger when prompted 'Show me'). Record Pass or Fail per official Follow-Up criteria.",
+            "transitions": [
+              { "condition": "PASS", "terminalResult": "PASS" },
+              { "condition": "FAIL", "terminalResult": "FAIL" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "itemId": "mchat_r_07",
+      "officialNumber": 7,
+      "text": "Does your child point with one finger to show you something interesting? (For example, pointing to an airplane in the sky or a big truck in the road)",
+      "atRiskResponse": "NO",
+      "pointValue": 1,
+      "followUpFlow": {
+        "entryNodeId": "fu_07_start",
+        "nodes": [
+          {
+            "nodeId": "fu_07_start",
+            "nodeType": "CLINICIAN_PASS_FAIL",
+            "promptText": "Ask if the child points with one finger strictly to share interest (not to request), such as an airplane, truck, bug, or animal. Record Pass if pointing to draw attention to an interesting object, otherwise Fail.",
+            "transitions": [
+              { "condition": "PASS", "terminalResult": "PASS" },
+              { "condition": "FAIL", "terminalResult": "FAIL" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "itemId": "mchat_r_08",
+      "officialNumber": 8,
+      "text": "Is your child interested in other children? (For example, does your child watch other children, smile at them, or go to them?)",
+      "atRiskResponse": "NO",
+      "pointValue": 1,
+      "followUpFlow": {
+        "entryNodeId": "fu_08_start",
+        "nodes": [
+          {
+            "nodeId": "fu_08_start",
+            "nodeType": "CLINICIAN_PASS_FAIL",
+            "promptText": "Ask how the child responds to non-sibling peers (watches, smiles, approaches, plays alongside, or ignores). Record Pass if responsive to peers more than half the time, otherwise Fail.",
+            "transitions": [
+              { "condition": "PASS", "terminalResult": "PASS" },
+              { "condition": "FAIL", "terminalResult": "FAIL" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "itemId": "mchat_r_09",
+      "officialNumber": 9,
+      "text": "Does your child show you things by bringing them to you or holding them up for you to see — not to get help, but just to share? (For example, showing you a flower, a stuffed animal, or a toy truck)",
+      "atRiskResponse": "NO",
+      "pointValue": 1,
+      "followUpFlow": {
+        "entryNodeId": "fu_09_start",
+        "nodes": [
+          {
+            "nodeId": "fu_09_start",
+            "nodeType": "CLINICIAN_PASS_FAIL",
+            "promptText": "Ask whether the child brings or holds up a picture, toy, drawing, or object strictly to share enjoyment with the caregiver (not solely to ask for help). Record Pass or Fail.",
+            "transitions": [
+              { "condition": "PASS", "terminalResult": "PASS" },
+              { "condition": "FAIL", "terminalResult": "FAIL" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "itemId": "mchat_r_10",
+      "officialNumber": 10,
+      "text": "Does your child respond when you call his or her name? (For example, does he or she look up, talk or babble, or stop what he or she is doing when you call his or her name?)",
+      "atRiskResponse": "NO",
+      "pointValue": 1,
+      "followUpFlow": {
+        "entryNodeId": "fu_10_start",
+        "nodes": [
+          {
+            "nodeId": "fu_10_start",
+            "nodeType": "CLINICIAN_PASS_FAIL",
+            "promptText": "Ask what the child does most often when called by name without touching or gesturing (looks up, talks/babbles, stops activity vs. ignores or only responds when right in front of face). Record Pass or Fail.",
+            "transitions": [
+              { "condition": "PASS", "terminalResult": "PASS" },
+              { "condition": "FAIL", "terminalResult": "FAIL" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "itemId": "mchat_r_11",
+      "officialNumber": 11,
+      "text": "When you smile at your child, does he or she smile back at you?",
+      "atRiskResponse": "NO",
+      "pointValue": 1,
+      "followUpFlow": {
+        "entryNodeId": "fu_11_start",
+        "nodes": [
+          {
+            "nodeId": "fu_11_start",
+            "nodeType": "CLINICIAN_PASS_FAIL",
+            "promptText": "Clarify whether the child smiles reciprocally in response to the caregiver's smile (vs. smiling only during tickling/roughhousing or at random). Record Pass or Fail.",
+            "transitions": [
+              { "condition": "PASS", "terminalResult": "PASS" },
+              { "condition": "FAIL", "terminalResult": "FAIL" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "itemId": "mchat_r_12",
+      "officialNumber": 12,
+      "text": "Does your child get upset by everyday noises? (For example, does your child scream or cry to a noise like a vacuum cleaner or loud music?)",
+      "atRiskResponse": "YES",
+      "pointValue": 1,
+      "followUpFlow": {
+        "entryNodeId": "fu_12_start",
+        "nodes": [
+          {
+            "nodeId": "fu_12_start",
+            "nodeType": "SINGLE_CHOICE",
+            "promptText": "Does the child have a severe negative reaction (screaming, crying, covering ears consistently) to two or more everyday household sounds?",
+            "transitions": [
+              { "condition": "YES", "terminalResult": "FAIL" },
+              { "condition": "NO", "terminalResult": "PASS" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "itemId": "mchat_r_13",
+      "officialNumber": 13,
+      "text": "Does your child walk?",
+      "atRiskResponse": "NO",
+      "pointValue": 1,
+      "followUpFlow": {
+        "entryNodeId": "fu_13_start",
+        "nodes": [
+          {
+            "nodeId": "fu_13_start",
+            "nodeType": "SINGLE_CHOICE",
+            "promptText": "Does the child walk independently without holding onto furniture or a caregiver's hand?",
+            "transitions": [
+              { "condition": "YES", "terminalResult": "PASS" },
+              { "condition": "NO", "terminalResult": "FAIL" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "itemId": "mchat_r_14",
+      "officialNumber": 14,
+      "text": "Does your child look you in the eye when you are talking to him or her, playing with her or him, or dressing up?",
+      "atRiskResponse": "NO",
+      "pointValue": 1,
+      "followUpFlow": {
+        "entryNodeId": "fu_14_start",
+        "nodes": [
+          {
+            "nodeId": "fu_14_start",
+            "nodeType": "CLINICIAN_PASS_FAIL",
+            "promptText": "Ask across daily routines (needs something, playing, feeding, diaper change, reading) whether the child consistently makes eye contact every day (5+ seconds during interaction). Record Pass or Fail.",
+            "transitions": [
+              { "condition": "PASS", "terminalResult": "PASS" },
+              { "condition": "FAIL", "terminalResult": "FAIL" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "itemId": "mchat_r_15",
+      "officialNumber": 15,
+      "text": "Does your child try to copy what you do? (For example, wave bye-bye, clap, or make a funny noise when you do)",
+      "atRiskResponse": "NO",
+      "pointValue": 1,
+      "followUpFlow": {
+        "entryNodeId": "fu_15_start",
+        "nodes": [
+          {
+            "nodeId": "fu_15_start",
+            "nodeType": "CLINICIAN_PASS_FAIL",
+            "promptText": "Ask if the child imitates at least two actions (e.g., sticking out tongue, making a funny sound, waving goodbye, clapping, putting finger to lips, blowing kisses). Record Pass if >= 2 imitated, otherwise Fail.",
+            "transitions": [
+              { "condition": "PASS", "terminalResult": "PASS" },
+              { "condition": "FAIL", "terminalResult": "FAIL" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "itemId": "mchat_r_16",
+      "officialNumber": 16,
+      "text": "If you turn your head to look at something, does your child look around to see what you are looking at?",
+      "atRiskResponse": "NO",
+      "pointValue": 1,
+      "followUpFlow": {
+        "entryNodeId": "fu_16_start",
+        "nodes": [
+          {
+            "nodeId": "fu_16_start",
+            "nodeType": "CLINICIAN_PASS_FAIL",
+            "promptText": "Ask what the child usually does when the caregiver turns their head toward something (follows caregiver's gaze toward the object vs. ignores or looks only at caregiver's face). Record Pass or Fail.",
+            "transitions": [
+              { "condition": "PASS", "terminalResult": "PASS" },
+              { "condition": "FAIL", "terminalResult": "FAIL" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "itemId": "mchat_r_17",
+      "officialNumber": 17,
+      "text": "Does your child try to get you to watch him or her? (For example, does your child look at you for praise, or say \"look\" or \"watch me\")",
+      "atRiskResponse": "NO",
+      "pointValue": 1,
+      "followUpFlow": {
+        "entryNodeId": "fu_17_start",
+        "nodes": [
+          {
+            "nodeId": "fu_17_start",
+            "nodeType": "CLINICIAN_PASS_FAIL",
+            "promptText": "Ask if the child says 'Look!' / 'Watch me!', babbles or makes a noise to get caregiver's attention, or looks back to see caregiver's praise. Record Pass if yes to any, otherwise Fail.",
+            "transitions": [
+              { "condition": "PASS", "terminalResult": "PASS" },
+              { "condition": "FAIL", "terminalResult": "FAIL" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "itemId": "mchat_r_18",
+      "officialNumber": 18,
+      "text": "Does your child understand when you tell him or her to do something? (For example, if you don't use gestures, does your child understand \"put the book on the chair\" or \"bring me the blanket\")",
+      "atRiskResponse": "NO",
+      "pointValue": 1,
+      "followUpFlow": {
+        "entryNodeId": "fu_18_start",
+        "nodes": [
+          {
+            "nodeId": "fu_18_start",
+            "nodeType": "CLINICIAN_PASS_FAIL",
+            "promptText": "Clarify whether the child follows a simple verbal command WITHOUT contextual cues or pointing/gestures (e.g., 'Show me your shoe' when not getting ready to leave). Record Pass or Fail.",
+            "transitions": [
+              { "condition": "PASS", "terminalResult": "PASS" },
+              { "condition": "FAIL", "terminalResult": "FAIL" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "itemId": "mchat_r_19",
+      "officialNumber": 19,
+      "text": "If something new happens, does your child look at your face to see how you feel about it? (For example, if you hear a strange or funny noise, or see a new toy, will your child look at your face)",
+      "atRiskResponse": "NO",
+      "pointValue": 1,
+      "followUpFlow": {
+        "entryNodeId": "fu_19_start",
+        "nodes": [
+          {
+            "nodeId": "fu_19_start",
+            "nodeType": "CLINICIAN_PASS_FAIL",
+            "promptText": "Ask if the child checks the caregiver's facial expression during an unfamiliar or mildly startling event (strange noise, new toy, unfamiliar person). Record Pass if social referencing occurs, otherwise Fail.",
+            "transitions": [
+              { "condition": "PASS", "terminalResult": "PASS" },
+              { "condition": "FAIL", "terminalResult": "FAIL" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "itemId": "mchat_r_20",
+      "officialNumber": 20,
+      "text": "Does your child like movement activities? (For example, being swung or bounced on your knee)",
+      "atRiskResponse": "NO",
+      "pointValue": 1,
+      "followUpFlow": {
+        "entryNodeId": "fu_20_start",
+        "nodes": [
+          {
+            "nodeId": "fu_20_start",
+            "nodeType": "CLINICIAN_PASS_FAIL",
+            "promptText": "Ask how the child reacts to being bounced on a knee or swung (laughs, smiles, asks for more vs. dislikes or shows no enjoyment). Record Pass if child enjoys movement activities, otherwise Fail.",
+            "transitions": [
+              { "condition": "PASS", "terminalResult": "PASS" },
+              { "condition": "FAIL", "terminalResult": "FAIL" }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "recommendations": {
+    "NEGATIVE_LOW_INITIAL_UNDER_24M": {
+      "code": "LOW_RESCREEN_AT_24M",
+      "title": "Negative Screen — Low Risk (Rescreen at 24 Months)",
+      "body": "Initial score is 0–2 (Low Risk). Because the child is younger than 24 months, rescreen after their second birthday (at 24 months). No further action is required at this time unless developmental surveillance indicates risk for ASD."
+    },
+    "NEGATIVE_LOW_INITIAL_24M_OR_OLDER": {
+      "code": "LOW_NO_ACTION",
+      "title": "Negative Screen — Low Risk",
+      "body": "Initial score is 0–2 (Low Risk). No further action is required at this time unless developmental surveillance indicates risk for ASD."
+    },
+    "FOLLOWUP_REQUIRED_MODERATE": {
+      "code": "MODERATE_FOLLOWUP_REQUIRED",
+      "title": "Moderate Risk — M-CHAT-R Follow-Up Required",
+      "body": "Initial score is 3–7 (Moderate Risk). Administer the Stage 2 M-CHAT-R Follow-Up interview only for the items scored at-risk to gather additional information."
+    },
+    "NEGATIVE_AFTER_FOLLOWUP": {
+      "code": "MODERATE_NEGATIVE_AFTER_FOLLOWUP",
+      "title": "Negative Screen — After Follow-Up",
+      "body": "Follow-Up score is 0–1. Child has screened negative. No further action is required at this time, though the child should be rescreened at future well-child visits."
+    },
+    "POSITIVE_AFTER_FOLLOWUP": {
+      "code": "MODERATE_POSITIVE_AFTER_FOLLOWUP",
+      "title": "Positive Screen — Diagnostic & Early Intervention Referral Recommended",
+      "body": "Follow-Up score is 2 or higher. Child has screened positive. Refer immediately for diagnostic evaluation and eligibility evaluation for early intervention services."
+    },
+    "POSITIVE_HIGH_INITIAL": {
+      "code": "HIGH_DIRECT_REFERRAL",
+      "title": "Positive Screen — Immediate Referral (Follow-Up Bypassed)",
+      "body": "Initial score is 8–20 (High Risk). It is acceptable to bypass the Follow-Up and refer immediately for formal diagnostic evaluation and eligibility evaluation for early intervention services."
+    }
+  }
+}

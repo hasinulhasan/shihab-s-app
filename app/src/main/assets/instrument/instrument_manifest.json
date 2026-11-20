@@ -1,0 +1,19 @@
+{
+  "manifestVersion": 1,
+  "instruments": [
+    {
+      "instrumentId": "mchat-r-f",
+      "instrumentVersion": "2009-en-v1",
+      "language": "en",
+      "assetPath": "instrument/mchat_rf_en_v1.json",
+      "sha256": "386a932a161da508c8db17cf7f60396c067a05b5aa97269dfb054dc0f675d2b3"
+    },
+    {
+      "instrumentId": "mchat-r-f",
+      "instrumentVersion": "2017-bn-v1",
+      "language": "bn",
+      "assetPath": "instrument/mchat_rf_bn_v1.json",
+      "sha256": "15fb5e563c7ea07256c7d8d3d0ece5d8157b168e15ae227153f1063e13bd898d"
+    }
+  ]
+}

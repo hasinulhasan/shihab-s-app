@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <!-- Restricted strictly to temporary clinically exported PDFs shared via FLAG_GRANT_READ_URI_PERMISSION -->
+    <cache-path
+        name="shared_reports"
+        path="shared_reports/" />
+</paths>

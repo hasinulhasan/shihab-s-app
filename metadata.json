@@ -1,0 +1,8 @@
+{
+  "name": "M-CHAT-R/F Clinician",
+  "description": "Offline-first clinical screening and record-keeping application for administering, scoring, and managing M-CHAT-R/F assessments with English and Bangla support.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

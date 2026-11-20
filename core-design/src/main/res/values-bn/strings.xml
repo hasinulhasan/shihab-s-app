@@ -1,0 +1,97 @@
+<resources>
+    <!-- Navigation -->
+    <string name="nav_home">হোম</string>
+    <string name="nav_statistics">পরিসংখ্যান</string>
+    <string name="nav_new_survey">নতুন স্ক্রিনিং</string>
+    <string name="nav_settings">সেটিংস</string>
+    <string name="cd_nav_new_survey">নতুন এম-চ্যাট-আর/এফ স্ক্রিনিং শুরু করুন</string>
+
+    <!-- Status Labels (Always paired with icon + color) -->
+    <string name="status_low_risk">কম ঝুঁকি</string>
+    <string name="status_moderate_risk">মাঝারি ঝুঁকি</string>
+    <string name="status_high_risk">উচ্চ ঝুঁকি</string>
+    <string name="status_negative_screen">নেগেটিভ স্ক্রিন</string>
+    <string name="status_positive_screen">পজিটিভ স্ক্রিন</string>
+    <string name="status_followup_pending">ফলো-আপ বাকি</string>
+    <string name="status_incomplete">অসম্পূর্ণ</string>
+    <string name="status_synced">সিঙ্ক সম্পন্ন</string>
+    <string name="status_pending_sync">সিঙ্ক অপেক্ষমাণ</string>
+    <string name="status_sync_in_progress">সিঙ্ক হচ্ছে</string>
+    <string name="status_sync_failed">সিঙ্ক ব্যর্থ</string>
+    <string name="status_offline">অফলাইনে প্রস্তুত</string>
+
+    <!-- Clinical Banner -->
+    <string name="clinical_tool_badge">ক্লিনিক্যাল স্ক্রিনিং টুল</string>
+    <string name="non_diagnostic_notice">এটি শুধুমাত্র স্ক্রিনিং এবং রেকর্ড সংরক্ষণের টুল — রোগ নির্ণয়ের (ডায়াগনস্টিক) যন্ত্র নয়।</string>
+
+    <!-- Home Tab Foundation -->
+    <string name="home_title">ক্লিনিক্যাল ওয়ার্কস্পেস</string>
+    <string name="home_subtitle">অফলাইন এম-চ্যাট-আর/এফ স্ক্রিনিং ওয়ার্কস্পেস প্রস্তুত</string>
+    <string name="home_empty_title">এখনও কোনো স্ক্রিনিং সংরক্ষিত হয়নি</string>
+    <string name="home_empty_body">এনক্রিপ্টেড রোগীর রেকর্ড, স্ক্রিনিং ওয়ার্কফ্লো এবং ড্যাশবোর্ড বিশ্লেষণ ফেজ ২ থেকে এখানে যুক্ত হবে।</string>
+    <string name="home_action_start_screening">নতুন স্ক্রিনিং শুরু করুন</string>
+    <string name="home_card_patients">রোগী</string>
+    <string name="home_card_screenings">স্ক্রিনিং</string>
+    <string name="home_card_followup">বাকি ফলো-আপ</string>
+    <string name="home_card_sync_title">লোকাল স্টোরেজ অবস্থা</string>
+
+    <!-- Statistics Tab Foundation -->
+    <string name="stats_title">স্ক্রিনিং পরিসংখ্যান</string>
+    <string name="stats_subtitle">সংরক্ষিত রেকর্ড থেকে সরাসরি গণনাকৃত সমষ্টিগত ফলাফল</string>
+    <string name="stats_empty_title">কোনো সম্পূর্ণ তথ্য নেই</string>
+    <string name="stats_empty_body">সংরক্ষিত স্ক্রিনিং ডেটা যুক্ত হলে ফলাফলের বিভাজন, বয়সভিত্তিক বণ্টন ও প্রশ্নভিত্তিক বিশ্লেষণ এখানে প্রদর্শিত হবে।</string>
+    <string name="stats_definition_title">ফলাফলের সংজ্ঞা</string>
+    <string name="stats_definition_body">পজিটিভ স্ক্রিন = ফলো-আপ পরবর্তী পজিটিভ + প্রাথমিক উচ্চ ঝুঁকি রেফারেল। নেগেটিভ স্ক্রিন = প্রাথমিক কম ঝুঁকি নেগেটিভ + ফলো-আপ পরবর্তী নেগেটিভ। বাকি ও অসম্পূর্ণ স্ক্রিনিং আলাদাভাবে দেখানো হয়।</string>
+
+    <!-- New Survey Tab Foundation -->
+    <string name="new_survey_title">নতুন এম-চ্যাট-আর/এফ স্ক্রিনিং</string>
+    <string name="new_survey_subtitle">একক ক্লিনিশিয়ানের জন্য অফলাইন মূল্যায়ন ওয়ার্কফ্লো</string>
+    <string name="new_survey_empty_title">স্ক্রিনিং ওয়ার্কফ্লো প্রস্তুত হচ্ছে</string>
+    <string name="new_survey_empty_body">সম্মতি গ্রহণ, রোগী নিবন্ধন, বয়স যাচাই (১৬–৩০ মাস) এবং চেকসাম-যাচাইকৃত এম-চ্যাট-আর/এফ প্রশ্নাবলি ফেজ ২–৪ এ সক্রিয় হবে।</string>
+    <string name="new_survey_step_consent">১. সম্মতি ও রোগীর রেকর্ড</string>
+    <string name="new_survey_step_initial">২. ২০টি প্রশ্নের প্রাথমিক ধাপ</string>
+    <string name="new_survey_step_followup">৩. ডেটা-চালিত ফলো-আপ (প্রয়োজনে)</string>
+
+    <!-- Settings Tab Foundation -->
+    <string name="settings_title">সেটিংস ও নিরাপত্তা</string>
+    <string name="settings_subtitle">থিম, ভাষা এবং ক্লিনিশিয়ান লক নিয়ন্ত্রণ</string>
+    <string name="settings_section_language">ভাষা</string>
+    <string name="settings_language_en">English (ইংরেজি)</string>
+    <string name="settings_language_bn">বাংলা</string>
+    <string name="settings_section_appearance">ডিসপ্লে ও অ্যাক্সেসিবিলিটি</string>
+    <string name="settings_theme_light">হালকা (লাইট)</string>
+    <string name="settings_theme_dark">গাঢ় (ডার্ক)</string>
+    <string name="settings_theme_system">সিস্টেম</string>
+    <string name="settings_reduce_transparency">স্বচ্ছতা কমান</string>
+    <string name="settings_reduce_transparency_desc">লাইভ ব্লারের পরিবর্তে স্থির আধা-স্বচ্ছ প্যানেল ব্যবহার করে</string>
+    <string name="settings_section_security">অ্যাপ লক ও গোপনীয়তা</string>
+    <string name="settings_pin_status_configured">ক্লিনিশিয়ান পিন সক্রিয় আছে</string>
+    <string name="settings_pin_status_not_set">এখনও কোনো পিন সেট করা হয়নি</string>
+    <string name="settings_setup_pin">ক্লিনিশিয়ান পিন সেট করুন</string>
+    <string name="settings_change_pin">পিন পরিবর্তন করুন</string>
+    <string name="settings_lock_now">এখনই অ্যাপ লক করুন</string>
+    <string name="settings_biometric_toggle">বায়োমেট্রিক দিয়ে আনলক</string>
+    <string name="settings_biometric_unavailable">এই ডিভাইসে বায়োমেট্রিক নিবন্ধিত নেই</string>
+    <string name="settings_autolock_title">স্বয়ংক্রিয় লক সময়সীমা</string>
+    <string name="settings_timeout_immediate">ব্যাকগ্রাউন্ডে গেলে সাথে সাথে</string>
+    <string name="settings_timeout_1m">১ মিনিট</string>
+    <string name="settings_timeout_5m">৫ মিনিট</string>
+    <string name="settings_timeout_15m">১৫ মিনিট</string>
+    <string name="settings_screen_security_note">স্ক্রিনশট সুরক্ষা (FLAG_SECURE) সক্রিয় এবং অ্যান্ড্রয়েড ক্লাউড অটো-ব্যাকআপ বন্ধ আছে।</string>
+
+    <!-- App Lock Shell -->
+    <string name="applock_title_unlock">ক্লিনিশিয়ান লক</string>
+    <string name="applock_subtitle_unlock">রোগীর রেকর্ডে প্রবেশ করতে আপনার ৬-অঙ্কের পিন দিন অথবা বায়োমেট্রিক ব্যবহার করুন</string>
+    <string name="applock_title_setup">৬-অঙ্কের পিন তৈরি করুন</string>
+    <string name="applock_subtitle_setup">রোগীর তথ্য সুরক্ষিত রাখে এবং ব্যাকগ্রাউন্ডে গেলে স্বয়ংক্রিয়ভাবে লক হয়</string>
+    <string name="applock_title_confirm">৬-অঙ্কের পিন নিশ্চিত করুন</string>
+    <string name="applock_subtitle_confirm">নিশ্চিত করতে পিনটি পুনরায় লিখুন</string>
+    <string name="applock_error_wrong_pin">ভুল পিন। অনুগ্রহ করে আবার চেষ্টা করুন।</string>
+    <string name="applock_error_mismatch">পিন মেলেনি। আবার শুরু করুন।</string>
+    <string name="applock_use_biometric">বায়োমেট্রিক ব্যবহার করুন</string>
+    <string name="applock_cancel">বাতিল</string>
+    <string name="applock_backspace">শেষ অঙ্ক মুছুন</string>
+    <string name="applock_biometric_prompt_title">এম-চ্যাট ক্লিনিশিয়ান আনলক</string>
+    <string name="applock_biometric_prompt_subtitle">চালিয়ে যেতে ক্লিনিশিয়ান পরিচয় যাচাই করুন</string>
+    <string name="applock_biometric_negative">পিন ব্যবহার করুন</string>
+</resources>
